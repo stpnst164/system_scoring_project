@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Регистрация клиента</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.phoneNumber) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.education) }}
+    {{ form_row(form.giveAgreement) }}
+{#    <button class="btn btn-primary">Зарегистрировать</button>#}
+    {{ form_widget(form.submit) }}
+    {{ form_end(form) }}
+{% endblock %}
