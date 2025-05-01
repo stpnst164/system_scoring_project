@@ -1,20 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ClientController!{% endblock %}
+{% block title %}Клиенты{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Список клиентов</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/User/Desktop/FrontendRoadmap2024-2025/Symfony/projects/system_scoring_project/src/Controller/ClientController.php</code></li>
-        <li>Your template at <code>C:/Users/User/Desktop/FrontendRoadmap2024-2025/Symfony/projects/system_scoring_project/templates/client/index.html.twig</code></li>
-    </ul>
-</div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Номер телефона</th>
+            <th>Э-почта</th>
+            <th>Образование</th>
+            <th>Согласие на обработку персональных данных</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.firstName }}</td>
+                <td>{{ client.lastName }}</td>
+                <td>{{ client.phoneNumber }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.education }}</td>
+                <td>{{ client.giveAgreement }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
