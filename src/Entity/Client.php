@@ -31,6 +31,9 @@ class Client
     #[ORM\Column(nullable: true)]
     private ?bool $giveAgreement = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $scoring = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +107,18 @@ class Client
     public function setGiveAgreement(?bool $giveAgreement): static
     {
         $this->giveAgreement = $giveAgreement;
+
+        return $this;
+    }
+
+    public function getScoring(): ?int
+    {
+        return $this->scoring;
+    }
+
+    public function setScoring(?int $scoring): static
+    {
+        $this->scoring = $scoring;
 
         return $this;
     }
