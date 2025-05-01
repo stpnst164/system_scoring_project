@@ -55,6 +55,7 @@ class ScoringService
             'МТС' => ['913', '983']
         ];
 
+        //Цикл проходится по операторам для дальнейшего присваивания очков за оператора
         foreach ($operatorCodes as $name => $prefixes) {
             if (in_array($code, $prefixes, true)) {
                 return $name;
