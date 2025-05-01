@@ -2,8 +2,65 @@
 
 namespace App\Service;
 
+use App\Dto\ScoringResult;
+use App\Entity\Client;
+
 class ScoringService
 {
-    //Список правил с баллами
+    //Функция суммирования баллов
+    public function calculate(Client $client) :ScoringResult {
+        $total = 0;
+        //Список правил с баллами
+        //* Сотовый оператор.
+        // МегаФон - 10 баллов, Билайн - 5, МТС - 3, Иной - 1.
+        $operatorScores =
+            [
+                'МегаФон' => 10,
+                'Билайн' => 5,
+                'МТС' => 3,
+                'Иной' => 1
+            ];
 
+        //Вычисление оператора по коду номера телефона
+        $operator = $this -> detectOperator($client -> getPhoneNumber());
+
+        //Подсчет вычисляется по оператору. Если используется другой оператор - присвоится 1 балл
+        $operatorScore = $operatorScores[$operator] ?? 1;
+
+        $total += $operatorScore;
+
+        return new ScoringResult($total);
+    }
+
+    //Определение оператора
+    private function detectOperator(string $phoneNumber): string
+    {
+        //Удаление всех нецифровых символов
+        $clean = preg_replace('/[^0-9]/', '', $phoneNumber);
+
+        //Удаление +7 или 8 для оставления кода оператора
+        if (str_starts_with($clean, '7') && strlen($clean) === 11) {
+            $code = substr($clean, 1, 3);
+        } elseif (str_starts_with($clean, '8') && strlen($clean) === 11) {
+            $code = substr($clean, 1, 3);
+        } elseif (strlen($clean) === 10) {
+            $code = substr($clean, 0, 3);
+        } else {
+            return 'Иной';
+        }
+
+        $operatorCodes = [
+            'МегаФон' => ['923', '929', '933', '999'],
+            'Билайн' => ['903'],
+            'МТС' => ['913', '983']
+        ];
+
+        foreach ($operatorCodes as $name => $prefixes) {
+            if (in_array($code, $prefixes, true)) {
+                return $name;
+            }
+        }
+
+        return 'Иной';
+    }
 }
