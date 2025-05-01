@@ -45,6 +45,29 @@ class ScoringService
 
         $total += $score;
 
+
+        //* Образование. Высшее образование - 15, Специальное образование - 10, Среднее образование - 5.
+        $educationScores = [
+            'Высшее' => 15,
+            'Специальное' => 10,
+            'Среднее' => 5
+        ];
+
+        $education = $client -> getEducation();
+
+        $score = $educationScores[$education];
+
+        $total += $score;
+
+
+        //* Галочка "Я даю согласие на обработку моих личных данных". Выбрана - 4, Не выбрана - 0
+        $agreement = $client -> isGiveAgreement() ? 4 : 0;
+
+        $score = $agreement;
+
+        $total += $score;
+
+
         return new ScoringResult($total);
     }
 
