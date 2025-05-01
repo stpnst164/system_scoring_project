@@ -17,15 +17,15 @@ final class ClientController extends AbstractController
         $clients = $clientRepository -> findAll();
 
         //Подсчет очков клиента
-        $scorings = [];
+        $scoring = [];
         foreach ($clients as $client) {
-            $scorings[$client -> getId()] = $scoringService -> calculate($client) -> getTotal();
+            $scoring[$client -> getId()] = $scoringService -> calculate($client) -> getTotal();
         }
 
         return $this->render('client/index.html.twig', [
             'controller_name' => 'ClientController',
             'clients' => $clients,
-            'scorings' => $scorings
+            'scoring' => $scoring
         ]);
     }
 }
