@@ -25,18 +25,25 @@ class ScoringService
         $operator = $this -> detectOperator($client -> getPhoneNumber());
 
         //Подсчет вычисляется по оператору. Если используется другой оператор - присвоится 1 балл
-        $operatorScore = $operatorScores[$operator] ?? 1;
+        $score = $operatorScores[$operator] ?? 1;
 
-        $total += $operatorScore;
+        $total += $score;
 
 
         //* Домен Э-почты. gmail - 10, yandex - 8, mail - 6, Иной - 3.
         $emailDomainScores = [
-            'gmail' => 10,
-            'yandex' => 8,
-            'mail' => 6,
+            'gmail.com' => 10,
+            'yandex.ru' => 8,
+            'mail.ru' => 6,
             'Иной' => 3
         ];
+
+        //Вычисление домена э-почты
+        $emailDomain = $this -> extractEmailDomain($client -> getEmail());
+
+        $score = $emailDomainScores[$emailDomain] ?? 3;
+
+        $total += $score;
 
         return new ScoringResult($total);
     }
@@ -70,6 +77,15 @@ class ScoringService
                 return $name;
             }
         }
+
+        return 'Иной';
+    }
+
+    //Функция извлечения домена э-почты
+    private function extractEmailDomain(string $email) :string {
+        $parts = explode('@', $email);
+        return $parts[1];
+
 
         return 'Иной';
     }
