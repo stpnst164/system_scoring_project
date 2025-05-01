@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Клиенты{% endblock %}
+{% block title %}Список клиентов{% endblock %}
 
 {% block body %}
     <h1>Список клиентов</h1>
@@ -30,7 +30,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="3">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
