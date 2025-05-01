@@ -15,6 +15,7 @@
             <th>Э-почта</th>
             <th>Образование</th>
             <th>Согласие на обработку персональных данных</th>
+            <th>Скоринг</th>
         </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
                 <td>{{ client.email }}</td>
                 <td>{{ client.education }}</td>
                 <td>{{ client.giveAgreement }}</td>
+                <td>{{ scoring[client.id] }}</td>
             </tr>
         {% else %}
             <tr>
