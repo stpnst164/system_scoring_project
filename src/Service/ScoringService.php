@@ -29,6 +29,15 @@ class ScoringService
 
         $total += $operatorScore;
 
+
+        //* Домен Э-почты. gmail - 10, yandex - 8, mail - 6, Иной - 3.
+        $emailDomainScores = [
+            'gmail' => 10,
+            'yandex' => 8,
+            'mail' => 6,
+            'Иной' => 3
+        ];
+
         return new ScoringResult($total);
     }
 
