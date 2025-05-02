@@ -1,0 +1,14 @@
+{# templates/client/show.html.twig #}
+<h1>Карточка клиента</h1>
+
+<ul>
+    <li><strong>Имя:</strong> {{ client.firstName }}</li>
+    <li><strong>Фамилия:</strong> {{ client.lastName }}</li>
+    <li><strong>Телефон:</strong> {{ client.phoneNumber }}</li>
+    <li><strong>Email:</strong> {{ client.email }}</li>
+    <li><strong>Образование:</strong> {{ client.education }}</li>
+    <li><strong>Согласие на обработку персональных данных:</strong> {{ client.giveAgreement }}</li>
+</ul>
+
+<a href="{{ path('app_client_edit', { id: client.id }) }}">Редактировать</a> |
+<a href="{{ path('app_client') }}">Назад к списку</a>
