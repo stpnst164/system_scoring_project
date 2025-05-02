@@ -67,7 +67,7 @@
 ---
 
 ## ⚙️ Консольная команда расчёта скоринга
-php bin/console app:calculate-scoring           # рассчёт для всех клиентов
+php bin/console app:calculate-scoring           # рассчёт для всех клиентов <br/>
 php bin/console app:calculate-scoring <id>      # рассчёт для одного клиента по ID
 
 После выполнения:
