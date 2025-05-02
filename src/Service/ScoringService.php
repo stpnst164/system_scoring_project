@@ -10,6 +10,7 @@ class ScoringService
     //Функция суммирования баллов
     public function calculate(Client $client) :ScoringResult {
         $total = 0;
+        $breakdown = [];
         //Список правил с баллами
         //* Сотовый оператор.
         // МегаФон - 10 баллов, Билайн - 5, МТС - 3, Иной - 1.
@@ -68,7 +69,7 @@ class ScoringService
         $total += $score;
 
 
-        return new ScoringResult($total);
+        return new ScoringResult($total, $breakdown);
     }
 
     //Определение оператора
