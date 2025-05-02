@@ -30,6 +30,8 @@ class ScoringService
 
         $total += $score;
 
+        $breakdown["Мобильный оператор - $operator"] = $score;
+
 
         //* Домен Э-почты. gmail - 10, yandex - 8, mail - 6, Иной - 3.
         $emailDomainScores = [
@@ -46,6 +48,7 @@ class ScoringService
 
         $total += $score;
 
+        $breakdown["Домен э-почты - $emailDomain"] = $score;
 
         //* Образование. Высшее образование - 15, Специальное образование - 10, Среднее образование - 5.
         $educationScores = [
@@ -60,6 +63,8 @@ class ScoringService
 
         $total += $score;
 
+        $breakdown["Образование - $education"] = $score;
+
 
         //* Галочка "Я даю согласие на обработку моих личных данных". Выбрана - 4, Не выбрана - 0
         $agreement = $client -> isGiveAgreement() ? 4 : 0;
@@ -68,12 +73,14 @@ class ScoringService
 
         $total += $score;
 
+        $breakdown["Согласие на обработку персональных данных - $agreement"] = $score;
+
 
         return new ScoringResult($total, $breakdown);
     }
 
     //Определение оператора
-    private function detectOperator(string $phoneNumber): string
+    protected function detectOperator(string $phoneNumber): string
     {
         //Удаление всех нецифровых символов
         $clean = preg_replace('/[^0-9]/', '', $phoneNumber);
@@ -106,7 +113,7 @@ class ScoringService
     }
 
     //Функция извлечения домена э-почты
-    private function extractEmailDomain(string $email) :string {
+    protected function extractEmailDomain(string $email) :string {
         $parts = explode('@', $email);
         return $parts[1];
 
