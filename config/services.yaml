@@ -20,6 +20,12 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\DataFixtures\ClientFixtures:
+        arguments:
+            $scoringService: '@App\Service\ScoringService'
+        tags: [ 'doctrine.fixture.orm' ]
+
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 knp_paginator:
