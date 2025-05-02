@@ -1,0 +1,15 @@
+{# templates/client/edit.html.twig #}
+<h1>Редактировать клиента</h1>
+
+{{ form_start(form) }}
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.phoneNumber) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.education) }}
+    {{ form_row(form.giveAgreement) }}
+
+<button class="btn">Сохранить</button>
+{{ form_end(form) }}
+
+<a href="{{ path('app_client_show', { id: client.id }) }}">Назад к карточке</a>
