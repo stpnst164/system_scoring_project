@@ -29,10 +29,10 @@
                 <td>{{ client.education }}</td>
                 <td>{{ client.giveAgreement }}</td>
                 <td>{{ client.scoring }}</td>
-{#                <td>#}
-{#                    <a href="{{ path('client_show', {id: client.id}) }}">Посмотреть</a> |#}
-{#                    <a href="{{ path('client_edit', {id: client.id}) }}">Редактировать</a>#}
-{#                </td>#}
+                <td>
+                    <a href="{{ path('app_client_show', {id: client.id}) }}">Посмотреть</a>
+                    <a href="{{ path('app_client_edit', {id: client.id}) }}">Редактировать</a>
+                </td>
             </tr>
         {% else %}
             <tr>
