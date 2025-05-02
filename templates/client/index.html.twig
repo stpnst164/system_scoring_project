@@ -19,7 +19,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for client in clients %}
+        {% for client in pagination %}
             <tr>
                 <td>{{ client.id }}</td>
                 <td>{{ client.firstName }}</td>
@@ -28,13 +28,21 @@
                 <td>{{ client.email }}</td>
                 <td>{{ client.education }}</td>
                 <td>{{ client.giveAgreement }}</td>
-                <td>{{ scoring[client.id] }}</td>
+                <td>{{ client.scoring }}</td>
+{#                <td>#}
+{#                    <a href="{{ path('client_show', {id: client.id}) }}">Посмотреть</a> |#}
+{#                    <a href="{{ path('client_edit', {id: client.id}) }}">Редактировать</a>#}
+{#                </td>#}
             </tr>
         {% else %}
             <tr>
                 <td colspan="3">no records found</td>
             </tr>
         {% endfor %}
+
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
         </tbody>
     </table>
 {% endblock %}
