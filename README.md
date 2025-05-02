@@ -93,3 +93,5 @@ php bin/phpunit
 - KnpPaginatorBundle
 - PHPUnit
 - Faker (для генерации тестовых данных)
+
+---
