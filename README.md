@@ -64,7 +64,8 @@
 - Образование (Среднее / Специальное / Высшее)
 - Согласие на обработку персональных данных (чекбокс)
 
-![ Форма регистрации ]("C:\Users\User\Downloads\form_register.png")
+![ Форма регистрации ]
+![form_register](https://github.com/user-attachments/assets/4544faa8-3f6a-412e-8d8c-67851dcd4ad4)
 
 ---
 
