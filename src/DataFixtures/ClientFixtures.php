@@ -21,14 +21,19 @@ class ClientFixtures extends Fixture
     {
         $faker = Factory::create('ru_RU');
 
-        $educations = ['Среднее', 'Специальное', 'Высшее'];
-        $phonePrefixes = [
-            'МегаФон' => ['+7923', '+7929', '+7933', '+7999'],
-            'Билайн'  => ['+7903'],
-            'МТС'     => ['+7913', '+7983'],
-            'Иной'    => ['+7950']
+        $operators = [
+            'МегаФон' => ['923', '929', '933', '999'],
+            'Билайн' => ['903'],
+            'МТС' => ['913', '983'],
+            'Иной' => []
         ];
-        $emailDomains = ['gmail.com', 'yandex.ru', 'mail.ru', 'example.com'];
+        $emailDomains = [
+            'gmail.com',
+            'yandex.ru',
+            'mail.ru'
+        ];
+        $educations = ['Высшее', 'Специальное', 'Среднее'];
+
 
         for ($i = 0; $i < 20; $i++) {
             $client = new Client();
@@ -36,8 +41,8 @@ class ClientFixtures extends Fixture
             $client->setFirstName($faker->firstName);
             $client->setLastName($faker->lastName);
 
-            $prefix = $faker->randomElement($phonePrefixes[$faker->randomElement(array_keys($phonePrefixes))]);
-            $phone = $prefix . $faker->numerify('#######');
+            $prefix = $faker->randomElement($operators[$faker->randomElement(array_keys($operators))]);
+            $phone = '+7' . $prefix . $faker->numerify('#######');
             $client->setPhoneNumber($phone);
 
             $domain = $faker->randomElement($emailDomains);
