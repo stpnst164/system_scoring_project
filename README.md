@@ -65,7 +65,8 @@
 - Согласие на обработку персональных данных (чекбокс)
 
 ![ Форма регистрации ]
-![form_register](https://github.com/user-attachments/assets/4544faa8-3f6a-412e-8d8c-67851dcd4ad4)
+![form_register](https://github.com/user-attachments/assets/cf2ad780-b44f-499f-973a-52e8b1384c73)
+
 
 ---
 
