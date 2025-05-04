@@ -83,7 +83,6 @@
 - Согласие на обработку персональных данных
 - Скоринг
 
-Посмотреть | Редактировать (Зайти в карточку клиента | Отредактировать карточку клиента)
 ![clients](https://github.com/user-attachments/assets/caa8c047-b8b6-489c-8735-ed882b770b82)
 
 
@@ -95,7 +94,6 @@
 
 Поля: Те же, что и при регистрации
 
-Редактировать | Назад к списку
 ![clients-show](https://github.com/user-attachments/assets/08c905e4-d83d-44c8-9d5b-ddf9d14d564c)
 
 
@@ -107,7 +105,6 @@
 
 Поля: Те же, что и при регистрации
 
-Назад к карточке
 ![clients-edit-id](https://github.com/user-attachments/assets/de038a31-4358-436b-b2bc-92192ec2f1dd)
 
 
