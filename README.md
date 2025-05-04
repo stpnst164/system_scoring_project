@@ -16,7 +16,7 @@
 ```
 
 ```shell
-   cp .env .env.local
+   cp .env
 ```
 
 # Запуск приложения
