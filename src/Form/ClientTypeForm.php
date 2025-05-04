@@ -13,6 +13,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class ClientTypeForm extends AbstractType
 {
@@ -28,6 +29,7 @@ class ClientTypeForm extends AbstractType
             ->add('phoneNumber', TelType::class, [
                 'label' => 'Номер телефона (только российский)',
                 'constraints' => [
+                    new Assert\NotBlank(['message' => 'Номер телефона не должен быть пустым']),
                     new Regex([
                             'pattern' => '/^(\+7|8)\d{10}$/',
                             'message' => 'Введите правильный российский номер телефона'
@@ -35,7 +37,11 @@ class ClientTypeForm extends AbstractType
                 ],
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Э-почта'
+                'label' => 'Э-почта',
+                'constraints' => [
+                    new Assert\NotBlank(['message' => 'Email не должен быть пустым']),
+                    new Assert\Email(['message' => 'Введите корректный email']),
+                ]
             ])
             ->add('education', ChoiceType::class, [
                 'label' => 'Образование',
